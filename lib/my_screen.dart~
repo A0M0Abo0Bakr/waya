@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'button_one.dart';
+import 'button_two.dart';
+
+class MainScreen extends StatelessWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('WAYA'), // عنوان ثابت
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Column(
+          children: [
+            ButtonOne(
+              onPressed: () {
+                // TODO: تنفيذ الأمر الأول هنا
+              },
+            ),
+            SizedBox(height: 20),
+            ButtonTwo(
+              onPressed: () {
+                // TODO: تنفيذ الأمر الثاني هنا
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

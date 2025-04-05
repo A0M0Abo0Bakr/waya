@@ -1,0 +1,17 @@
+{
+  "app_title": "WAYA App",
+  "change_language": "Change Language",
+  "welcome": "Welcome to the app",
+  "enter_data": "Please enter your data",
+  "name": "Name",
+  "age": "Age",
+  "phone": "Phone",
+  "family_phone": "Family Phone",
+  "continue": "Continue",
+  "error_name": "Please enter your name",
+  "error_age": "Please enter a valid age",
+  "error_phone": "Please enter a valid phone number",
+  "error_family_phone": "Please enter a valid family phone number",
+  "botton2": "botton 2",
+  "botton1": "botton 1"
+}

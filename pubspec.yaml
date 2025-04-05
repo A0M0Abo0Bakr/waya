@@ -1,0 +1,31 @@
+name: waya
+description: "Walk Assist With Your AI"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '^3.7.0'  # إضافة السطر ده
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  shared_preferences: ^2.2.0
+  intl: ^0.19.0
+  lottie: ^2.7.0
+  cupertino_icons: ^1.0.8
+  easy_localization: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/animations/
+    - assets/langs/
