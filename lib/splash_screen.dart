@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'registration_screen.dart';
+import 'my_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class SplashScreen extends StatefulWidget {
+  final bool isLoggedIn;
+
+  SplashScreen({required this.isLoggedIn});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -14,10 +19,17 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(Duration(seconds: 4), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => RegistrationScreen()),
-      );
+      if (widget.isLoggedIn) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MainScreen()),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => RegistrationScreen()),
+        );
+      }
     });
   }
 
@@ -37,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             SizedBox(height: 20),
             Text(
-              "loading".tr(), // الترجمة
+              "loading".tr(),
               style: TextStyle(fontSize: 20, color: Colors.green[900]),
             ),
           ],

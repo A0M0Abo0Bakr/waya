@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'my_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -18,18 +19,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String selectedCountryCode1 = '+20';
   String selectedCountryCode2 = '+20';
 
-  // الآن قائمة الأكواد بدون أعلام
-  final List<String> countryList = [
-    '+20',
-    '+966',
-    '+971',
-    '+1',
-    '+44',
-  ];
+  final List<String> countryList = ['+20', '+966', '+971', '+1', '+44'];
 
-  void goToMainScreen() {
+  Future<void> goToMainScreen() async {
     if (_formKey.currentState!.validate()) {
-      Navigator.push(
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
+
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => MainScreen()),
       );
@@ -45,7 +42,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'WAYA', // ثابت
+          'WAYA',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -56,8 +53,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           IconButton(
             icon: Icon(Icons.language, color: Colors.black),
             onPressed: () {
-              final newLocale =
-              context.locale.languageCode == 'en' ? Locale('ar') : Locale('en');
+              final newLocale = context.locale.languageCode == 'en'
+                  ? Locale('ar')
+                  : Locale('en');
               context.setLocale(newLocale);
             },
           ),
@@ -91,7 +89,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       ),
                       SizedBox(height: 20),
 
-                      // حقل الاسم
+                      // الاسم
                       buildTextField(
                         labelKey: 'name',
                         controller: nameController,
@@ -103,7 +101,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         },
                       ),
 
-                      // حقل العمر
+                      // العمر
                       buildTextField(
                         labelKey: 'age',
                         controller: ageController,
@@ -119,7 +117,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         },
                       ),
 
-                      // حقل رقم الهاتف
+                      // رقم الهاتف
                       buildPhoneFieldWithCountryCode(
                         labelKey: 'phone',
                         controller: phoneController,
@@ -129,7 +127,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         errorInvalidKey: 'error_phone',
                       ),
 
-                      // حقل رقم الهاتف العائلي
+                      // رقم هاتف العائلة
                       buildPhoneFieldWithCountryCode(
                         labelKey: 'family_phone',
                         controller: familyPhoneController,
@@ -201,7 +199,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       padding: EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
-          // Dropdown لأكواد الدول فقط
           Container(
             width: 90,
             padding: EdgeInsets.symmetric(horizontal: 8),
@@ -225,7 +222,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
           ),
           SizedBox(width: 10),
-          // حقل إدخال رقم الهاتف
           Expanded(
             child: TextFormField(
               controller: controller,
