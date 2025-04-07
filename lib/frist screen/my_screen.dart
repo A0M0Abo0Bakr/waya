@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'button_one.dart';
 import 'button_two.dart';
+import 'package:waya/sconed screen/my_screen_sc.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -24,7 +25,10 @@ class MainScreen extends StatelessWidget {
             SizedBox(height: 20),
             ButtonTwo(
               onPressed: () {
-                // TODO: تنفيذ الأمر الثاني هنا
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen2()),
+                );
               },
             ),
           ],

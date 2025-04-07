@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'registration_screen.dart';
-import 'my_screen.dart';
+import 'frist screen/my_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class SplashScreen extends StatefulWidget {

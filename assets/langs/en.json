@@ -12,6 +12,7 @@
   "error_age": "Please enter a valid age",
   "error_phone": "Please enter a valid phone number",
   "error_family_phone": "Please enter a valid family phone number",
+  "botton1": "botton 1",
   "botton2": "botton 2",
-  "botton1": "botton 1"
+  "botton3": "botton 3"
 }
