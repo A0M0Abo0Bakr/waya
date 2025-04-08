@@ -1,5 +1,5 @@
 {
-  "app_title": "WAYA App",
+  "app_title": "تطبيق WAYA",
   "change_language": "تغيير اللغة",
   "welcome": "أهلاً وسهلاً في التطبيق",
   "enter_data": "يرجى إدخال بياناتك",
@@ -14,5 +14,10 @@
   "error_family_phone": "الرجاء إدخال رقم الهاتف العائلي بشكل صحيح",
   "botton1": "الزر 1",
   "botton2": "الزر 2",
-  "botton3": "الزر 3"
+  "botton3": "الزر 3",
+  "edit_profile": "تعديل البيانات",
+  "save": "حفظ",
+  "data_saved": "تم حفظ البيانات بنجاح",
+  "error_invalid_name": "يجب أن يحتوي الاسم على حروف فقط",
+  "error_invalid_phone": "يجب أن يحتوي رقم الهاتف على أرقام و بطول 11 أرقام"
 }

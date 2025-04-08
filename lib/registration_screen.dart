@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'frist screen/my_screen.dart';
+import 'Registration successful.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -24,11 +25,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Future<void> goToMainScreen() async {
     if (_formKey.currentState!.validate()) {
       final prefs = await SharedPreferences.getInstance();
+      // حفظ حالة تسجيل الدخول
       await prefs.setBool('isLoggedIn', true);
+      // حفظ البيانات المُدخلة
+      await prefs.setString('name', nameController.text);
+      await prefs.setString('age', ageController.text);
+      await prefs.setString('phone', phoneController.text);
+      await prefs.setString('familyPhone', familyPhoneController.text);
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => MainScreen()),
+        MaterialPageRoute(builder: (context) => SplashScreen()),
       );
     }
   }
@@ -88,7 +95,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         style: TextStyle(fontSize: 16, color: Colors.black54),
                       ),
                       SizedBox(height: 20),
-
                       // الاسم
                       buildTextField(
                         labelKey: 'name',
@@ -100,7 +106,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           return null;
                         },
                       ),
-
                       // العمر
                       buildTextField(
                         labelKey: 'age',
@@ -116,33 +121,31 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           return null;
                         },
                       ),
-
-                      // رقم الهاتف
                       buildPhoneFieldWithCountryCode(
                         labelKey: 'phone',
                         controller: phoneController,
                         selectedCode: selectedCountryCode1,
-                        onChanged: (v) => setState(() => selectedCountryCode1 = v!),
+                        onChanged: (v) =>
+                            setState(() => selectedCountryCode1 = v!),
                         errorEmptyKey: 'error_phone',
                         errorInvalidKey: 'error_phone',
                       ),
-
-                      // رقم هاتف العائلة
                       buildPhoneFieldWithCountryCode(
                         labelKey: 'family_phone',
                         controller: familyPhoneController,
                         selectedCode: selectedCountryCode2,
-                        onChanged: (v) => setState(() => selectedCountryCode2 = v!),
+                        onChanged: (v) =>
+                            setState(() => selectedCountryCode2 = v!),
                         errorEmptyKey: 'error_family_phone',
                         errorInvalidKey: 'error_family_phone',
                       ),
-
                       SizedBox(height: 30),
                       ElevatedButton(
                         onPressed: goToMainScreen,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFFD4AF37),
-                          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
@@ -178,10 +181,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         validator: validator,
         decoration: InputDecoration(
           labelText: labelKey.tr(),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15)),
           filled: true,
           fillColor: Colors.white,
-          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          contentPadding:
+          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         ),
       ),
     );
@@ -237,10 +242,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               },
               decoration: InputDecoration(
                 labelText: labelKey.tr(),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15)),
                 filled: true,
                 fillColor: Colors.white,
-                contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                contentPadding:
+                EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               ),
             ),
           ),

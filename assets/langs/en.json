@@ -1,7 +1,7 @@
 {
   "app_title": "WAYA App",
   "change_language": "Change Language",
-  "welcome": "Welcome to the app",
+  "welcome": "Welcome to the App",
   "enter_data": "Please enter your data",
   "name": "Name",
   "age": "Age",
@@ -12,7 +12,12 @@
   "error_age": "Please enter a valid age",
   "error_phone": "Please enter a valid phone number",
   "error_family_phone": "Please enter a valid family phone number",
-  "botton1": "botton 1",
-  "botton2": "botton 2",
-  "botton3": "botton 3"
+  "botton1": "Button 1",
+  "botton2": "Button 2",
+  "botton3": "Button 3",
+  "edit_profile": "Edit Profile",
+  "save": "Save",
+  "data_saved": "Data saved successfully",
+  "error_invalid_name": "Name must contain letters only",
+  "error_invalid_phone": "Phone number must be numeric and at least 9 digits"
 }
