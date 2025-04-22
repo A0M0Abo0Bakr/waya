@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:waya/frist%20screen/button_one.dart';
-
 class ButtonThreeSc extends StatelessWidget {
   final VoidCallback onPressed;
   const ButtonThreeSc({Key? key, required this.onPressed}) : super(key: key);

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'frist screen/my_screen.dart';
 import 'Registration successful.dart';
 
 class RegistrationScreen extends StatefulWidget {

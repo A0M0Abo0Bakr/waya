@@ -7,53 +7,66 @@ class CallScreen extends StatefulWidget {
   _CallScreenState createState() => _CallScreenState();
 }
 
-class _CallScreenState extends State<CallScreen> {
+class _CallScreenState extends State<CallScreen> with WidgetsBindingObserver {
+  bool _launchedDialer = false;
+
   @override
   void initState() {
     super.initState();
-    _initiateCall();
+    // نضيف الـ observer
+    WidgetsBinding.instance.addObserver(this);
+    // نستدعي الكول بعد أول فريم علشان ScaffoldMessenger يكون موجود
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initiateCall();
+    });
   }
 
-  // دالة للاتصال المباشر
-  Future<void> _initiateCall() async {
-    final phoneNumber = await _getPhoneNumber();  // استرجاع الرقم من SharedPreferences
+  @override
+  void dispose() {
+    // نشيل الـ observer
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
-    if (phoneNumber != null && phoneNumber.isNotEmpty) {
-      final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
-
-      // محاولة الاتصال بالرقم مباشرة
-      if (await canLaunch(phoneUri.toString())) {
-        await launch(phoneUri.toString());
-      } else {
-        // إذا لم يتمكن من إجراء الاتصال
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('لا يمكن إجراء الاتصال.')),
-        );
-      }
-    } else {
-      // إذا لم يتم العثور على الرقم
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('لا يوجد رقم مخصص للاتصال.')),
-      );
+  // نراقب حالة الـ Lifecycle
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    // لما ييجي من الخلفية (بعد ما يفتح Dialer) ونفسنا نقفل الشاشة دي
+    if (state == AppLifecycleState.resumed && _launchedDialer) {
+      Navigator.of(context).pop(); // يرجع للي قبلها
     }
   }
 
-  // دالة لتحميل الرقم من SharedPreferences
-  Future<String?> _getPhoneNumber() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('familyPhone');  // استرجاع الرقم من SharedPreferences
+  Future<void> _initiateCall() async {
+    final prefs = await SharedPreferences.getInstance();
+    final phoneNumber = prefs.getString('familyPhone') ?? '';
+
+    if (phoneNumber.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('ما فيش رقم محفوظ للاتصال.')),
+      );
+      return;
+    }
+
+    final Uri telUri = Uri(scheme: 'tel', path: phoneNumber);
+    if (await canLaunchUrl(telUri)) {
+      await launchUrl(telUri, mode: LaunchMode.externalApplication);
+      _launchedDialer = true;  // علّم إننا فتحنا الـ Dialer
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('مش قادر أفتح تطبيق الاتصال.')),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('اتصال مباشر'),
-        backgroundColor: Colors.blue,
+        leading: BackButton(onPressed: () => Navigator.of(context).pop()),
       ),
-      body: Center(
-        child: CircularProgressIndicator(),  // يمكنك تخصيص هذا المؤشر وفقًا لاحتياجاتك
-      ),
+      body: Center(child: CircularProgressIndicator()),
     );
   }
 }

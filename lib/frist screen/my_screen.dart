@@ -54,8 +54,11 @@ class MainScreen extends StatelessWidget {
             children: [
               SizedBox(height: 30),
               ButtonOne(
-                onPressed: () {
-                  // TODO: تنفيذ الأمر الأول هنا
+                onLongPressStart: () {
+
+                },
+                onLongPressEnd: () {
+
                 },
               ),
               SizedBox(height: 40),
