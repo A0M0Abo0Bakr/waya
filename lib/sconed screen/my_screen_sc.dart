@@ -20,8 +20,8 @@ class MainScreen2 extends StatelessWidget {
             icon: Icon(Icons.language, color: Colors.black),
             onPressed: () {
               final newLocale = context.locale.languageCode == 'en'
-                  ? Locale('ar')
-                  : Locale('en');
+                  ? const Locale('ar')
+                  : const Locale('en');
               context.setLocale(newLocale);
             },
           ),
@@ -40,24 +40,12 @@ class MainScreen2 extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(height: 20),
-              ButtonOneSc(
-                onPressed: () {
-                  // TODO: تنفيذ الأمر الأول هنا
-                },
-              ),
-              SizedBox(height: 30),
-              ButtonTwoSc(
-                onPressed: () {
-                  // TODO: تنفيذ الأمر الثاني هنا
-                },
-              ),
-              SizedBox(height: 30),
-              ButtonThreeSc(
-                onPressed: () {
-                  // TODO: تنفيذ الأمر الثالث هنا
-                },
-              ),
+              const SizedBox(height: 20),
+              ButtonOneSc(),
+              const SizedBox(height: 30),
+              ButtonTwoSc(onPressed: () {}),
+              const SizedBox(height: 30),
+              ButtonThreeSc(onPressed: () {}),
             ],
           ),
         ),

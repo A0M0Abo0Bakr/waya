@@ -12,16 +12,18 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  shared_preferences: ^2.2.2
-  intl: ^0.19.0
-  lottie: ^2.7.0
-  cupertino_icons: ^1.0.8
-  easy_localization: ^3.0.0
-  url_launcher: ^6.1.5
-  permission_handler: ^11.3.0
-  speech_to_text: ^7.0.0
-  flutter_tts: ^3.6.3
-  audioplayers: ^5.2.1
+  shared_preferences: ^2.5.3      # :contentReference[oaicite:12]{index=12}
+  intl: 0.19.0                   # :contentReference[oaicite:13]{index=13}
+  lottie: ^3.3.1                  # :contentReference[oaicite:14]{index=14}
+  cupertino_icons: ^1.0.8         # :contentReference[oaicite:15]{index=15}
+  easy_localization: ^3.0.7+1     # :contentReference[oaicite:16]{index=16}
+  url_launcher: ^6.3.1            # :contentReference[oaicite:17]{index=17}
+  permission_handler: ^12.0.0+1   # :contentReference[oaicite:18]{index=18}
+  speech_to_text: ^7.0.0          # :contentReference[oaicite:19]{index=19}
+  audioplayers: ^6.4.0           # :contentReference[oaicite:20]{index=20}
+  camera: ^0.11.1                 # :contentReference[oaicite:21]{index=21}
+  flutter_tts: ^4.2.2             # :contentReference[oaicite:22]{index=22}
+  tflite_flutter: ^0.11.0         # :contentReference[oaicite:23]{index=23}
 
 dev_dependencies:
   flutter_test:
@@ -35,3 +37,4 @@ flutter:
     - assets/animations/
     - assets/langs/
     - assets/sound/
+    - assets/model/bestyolo_float32.tflite
