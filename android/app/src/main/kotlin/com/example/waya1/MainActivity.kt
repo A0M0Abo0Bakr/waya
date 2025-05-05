@@ -1,4 +1,4 @@
-package com.example.waya
+package com.example.waya1
 
 import io.flutter.embedding.android.FlutterActivity
 
