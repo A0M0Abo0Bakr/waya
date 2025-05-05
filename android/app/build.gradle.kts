@@ -3,7 +3,6 @@
 plugins {
     id("org.jetbrains.kotlin.android")
     id("com.android.application")
-    id("dev.flutter.flutter-gradle-plugin") version "2.3.0"
 }
 
 android {
