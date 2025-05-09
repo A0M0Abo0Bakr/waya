@@ -24,6 +24,7 @@ dependencies:
   camera: ^0.11.1                 # :contentReference[oaicite:21]{index=21}
   flutter_tts: ^4.2.2             # :contentReference[oaicite:22]{index=22}
   tflite_flutter: ^0.11.0         # :contentReference[oaicite:23]{index=23}
+#  tflite: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -38,3 +39,4 @@ flutter:
     - assets/langs/
     - assets/sound/
     - assets/model/bestyolo_float32.tflite
+    - assets/model/labels.txt
