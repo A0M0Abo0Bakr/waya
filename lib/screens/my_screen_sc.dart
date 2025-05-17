@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'button_one_sc.dart';
-import 'button_two_sc.dart';
-import 'button_three_sc.dart';
+import '../widgets/button_one_sc.dart';
+import 'package:waya/widgets/button_two_sc.dart';
+import '../widgets/button_three_sc.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:waya/Call.dart';
+import 'Call.dart';
 
 class MainScreen2 extends StatelessWidget {
   const MainScreen2({Key? key}) : super(key: key);

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../sconed screen/button_one_sc.dart';
-import '../sconed screen/button_two_sc.dart';
-import 'button_one.dart';
-import 'button_two.dart';
-import 'package:waya/sconed screen/my_screen_sc.dart';
+import 'package:waya/widgets//button_one_sc.dart';
+import 'package:waya/widgets//button_two_sc.dart';
+import '../widgets/button_two.dart';
+import 'my_screen_sc.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:waya/edit_profile_screen.dart';
-import 'package:waya/Call.dart';
+import '../widgets/button_one.dart';
+import 'edit_profile_screen.dart';
+import 'Call.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -65,27 +65,24 @@ class MainScreen extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 30),
-              ButtonOneSc(),
-              const SizedBox(height: 30),
-              ButtonTwoSc(onPressed: () {}),
-              // SizedBox(height: 30),
-              // ButtonOne(
-              //   onLongPressStart: () {
-              //
-              //   },
-              //   onLongPressEnd: () {
-              //
-              //   },
-              // ),
-              // SizedBox(height: 40),
-              // ButtonTwo(
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(builder: (context) => MainScreen2()),
-              //     );
-              //   },
-              // ),
+               SizedBox(height: 30),
+               ButtonOne(
+                 onLongPressStart: () {
+
+                 },
+                 onLongPressEnd: () {
+
+                 },
+               ),
+               SizedBox(height: 40),
+               ButtonTwo(
+                 onPressed: () {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => MainScreen2()),
+                   );
+                 },
+               ),
             ],
           ),
         ),
