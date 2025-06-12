@@ -22,8 +22,8 @@ android {
 
     defaultConfig {
         applicationId = "com.waya"
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 23
+        targetSdk = 33
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }

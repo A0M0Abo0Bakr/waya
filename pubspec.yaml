@@ -17,12 +17,12 @@ dependencies:
   easy_localization: ^3.0.3
   url_launcher: ^6.2.5
   permission_handler: ^11.3.0
-  speech_to_text: ^6.3.0
   audioplayers: ^5.2.1
   camera: ^0.10.5+5
   flutter_tts: ^3.8.4
   geolocator: ^10.1.0
   telephony: ^0.2.0
+  speech_to_text: ^6.3.0
 
   flutter_localizations:
     sdk: flutter
