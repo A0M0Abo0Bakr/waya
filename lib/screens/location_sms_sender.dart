@@ -8,13 +8,11 @@ final Telephony telephony = Telephony.instance;
 
 Future<void> sendEmergencyLocationSMS(BuildContext context) async {
   try {
-    // 🧭 الموقع
+    // 🧭 الحصول على الموقع
     Position position = await _determinePosition();
-
-    // 🏠 العنوان التفصيلي
     String address = "https://maps.google.com/?q=${position.latitude},${position.longitude}";
 
-    // 📱 الرقم من SharedPreferences
+    // 📱 الحصول على الرقم من SharedPreferences
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? phoneNumber = prefs.getString('phone_number');
 
@@ -23,18 +21,18 @@ Future<void> sendEmergencyLocationSMS(BuildContext context) async {
       return;
     }
 
-    // 📩 نص الرسالة
+    // 📝 نص الرسالة
     String emergencyText = tr("emergency_text");
     String message = "$emergencyText\n$address";
 
-    // ✅ تأكد من صلاحية الإرسال
-    bool? permissionsGranted = await telephony.requestSmsPermissions;
-    if (permissionsGranted != true) {
+    // ✅ التأكد من الصلاحيات
+    bool? permissionGranted = await telephony.requestSmsPermissions;
+    if (permissionGranted != true) {
       _showMessage(context, tr("sms_permission_denied"));
       return;
     }
 
-    // 🚀 إرسال تلقائي
+    // 🚀 إرسال الرسالة تلقائيًا
     await telephony.sendSms(
       to: phoneNumber,
       message: message,
@@ -47,7 +45,7 @@ Future<void> sendEmergencyLocationSMS(BuildContext context) async {
   }
 }
 
-// 📍 تحديد الموقع
+// تحديد الموقع
 Future<Position> _determinePosition() async {
   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
   if (!serviceEnabled) throw Exception('location_not_enabled'.tr());
@@ -65,7 +63,7 @@ Future<Position> _determinePosition() async {
   return await Geolocator.getCurrentPosition();
 }
 
-// 📢 عرض رسائل
+// عرض رسالة
 void _showMessage(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 }

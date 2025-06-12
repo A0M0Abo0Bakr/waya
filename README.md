@@ -1,6 +1,6 @@
 # waya
 
-Walk Assist With Your AI
+A new Flutter project.
 
 ## Getting Started
 
