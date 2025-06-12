@@ -12,8 +12,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  shared_preferences: ^2.5.3      # :contentReference[oaicite:12]{index=12}
   intl: 0.19.0                   # :contentReference[oaicite:13]{index=13}
+  shared_preferences: ^2.5.3      # :contentReference[oaicite:12]{index=12}
   lottie: ^3.3.1                  # :contentReference[oaicite:14]{index=14}
   cupertino_icons: ^1.0.8         # :contentReference[oaicite:15]{index=15}
   easy_localization: ^3.0.7+1     # :contentReference[oaicite:16]{index=16}
@@ -22,9 +22,9 @@ dependencies:
   speech_to_text: ^7.0.0          # :contentReference[oaicite:19]{index=19}
   audioplayers: ^6.4.0           # :contentReference[oaicite:20]{index=20}
   camera: ^0.11.1                 # :contentReference[oaicite:21]{index=21}
-  flutter_tts: ^4.2.2             # :contentReference[oaicite:22]{index=22}
-  tflite_flutter: ^0.11.0         # :contentReference[oaicite:23]{index=23}
-#  tflite: ^1.1.2
+  flutter_tts: ^4.2.2
+  geolocator: ^11.0.0
+  telephony: ^0.1.4
 
 dev_dependencies:
   flutter_test:

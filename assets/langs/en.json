@@ -19,5 +19,13 @@
   "save": "Save",
   "data_saved": "Data saved successfully",
   "error_invalid_name": "Name must contain letters only",
-  "error_invalid_phone": "Phone number must be numeric and at least 9 digits"
+  "error_invalid_phone": "Phone number must be numeric and at least 9 digits",
+  "start": "Start",
+  "location_not_enabled": "Location service is disabled",
+  "location_permission_denied": "Location permission denied",
+  "location_permission_forever": "Location permission denied forever",
+  "location_error": "Error getting location: ",
+  "no_phone_number": "Phone number not found in settings",
+  "cannot_open_sms": "Cannot open SMS application",
+  "location_sent": "Location sent successfully"
 }

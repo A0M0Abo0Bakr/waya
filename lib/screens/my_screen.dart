@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:waya/widgets//button_one_sc.dart';
-import 'package:waya/widgets//button_two_sc.dart';
-import '../widgets/button_two.dart';
-import 'my_screen_sc.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../widgets/button_one.dart';
+import '../widgets/start.dart';
 import 'edit_profile_screen.dart';
 import 'Call.dart';
+import 'location_sms_sender.dart';
+
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -51,9 +49,12 @@ class MainScreen extends StatelessWidget {
       ),
 
       body: GestureDetector(
-        onHorizontalDragUpdate: (details) {
+        onHorizontalDragUpdate: (details) async {
 
-          if (details.primaryDelta! < -10) {
+          if (details.primaryDelta! > 10) {
+
+            await sendEmergencyLocationSMS(context);
+          } else if (details.primaryDelta! < -10) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => CallScreen()),
@@ -65,24 +66,13 @@ class MainScreen extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 30),
-               SizedBox(height: 30),
-               ButtonOne(
-                 onLongPressStart: () {
+              Start(
+                onPressed: () async {
+                  await Future.delayed(Duration(seconds: 2));
+                  return true;
+                },
+              ),
 
-                 },
-                 onLongPressEnd: () {
-
-                 },
-               ),
-               SizedBox(height: 40),
-               ButtonTwo(
-                 onPressed: () {
-                   Navigator.push(
-                     context,
-                     MaterialPageRoute(builder: (context) => MainScreen2()),
-                   );
-                 },
-               ),
             ],
           ),
         ),

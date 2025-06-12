@@ -19,5 +19,13 @@
   "save": "حفظ",
   "data_saved": "تم حفظ البيانات بنجاح",
   "error_invalid_name": "يجب أن يحتوي الاسم على حروف فقط",
-  "error_invalid_phone": "يجب أن يحتوي رقم الهاتف على أرقام و بطول 11 أرقام"
+  "error_invalid_phone": "يجب أن يحتوي رقم الهاتف على أرقام و بطول 11 أرقام",
+  "start": "تشغيل",
+  "location_not_enabled": "خدمة الموقع غير مفعلة",
+  "location_permission_denied": "تم رفض صلاحية الموقع",
+  "location_permission_forever": "تم رفض الصلاحية نهائيًا",
+  "location_error": "حدث خطأ أثناء تحديد الموقع: ",
+  "no_phone_number": "الرقم غير موجود في الإعدادات",
+  "cannot_open_sms": "لا يمكن فتح تطبيق الرسائل",
+  "location_sent": "تم إرسال الموقع بنجاح"
 }
