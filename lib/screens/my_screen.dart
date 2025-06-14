@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import '../widgets/start.dart';
 import 'edit_profile_screen.dart';
 import 'Call.dart';
-import 'location_sms_sender.dart';
+import 'package:waya/screens/location_sms_sender.dart';
 
 
 class MainScreen extends StatelessWidget {
@@ -53,7 +53,7 @@ class MainScreen extends StatelessWidget {
 
           if (details.primaryDelta! > 10) {
 
-            await sendEmergencyLocationSMS(context);
+            await sendHelpMessage(context);
           } else if (details.primaryDelta! < -10) {
             Navigator.push(
               context,

@@ -27,5 +27,7 @@
   "location_error": "Error getting location: ",
   "no_phone_number": "Phone number not found in settings",
   "cannot_open_sms": "Cannot open SMS application",
-  "location_sent": "Location sent successfully"
+  "location_sent": "Location sent successfully",
+  "emergency_text": "I am at this location and need your help",
+  "sms_app_cannot_open": "Cannot open SMS application."
 }

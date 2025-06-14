@@ -21,9 +21,6 @@ dependencies:
   camera: ^0.10.5+5
   flutter_tts: ^3.8.4
   geolocator: ^10.1.0
-  telephony: ^0.2.0
-  speech_to_text: ^6.3.0
-
   flutter_localizations:
     sdk: flutter
 
