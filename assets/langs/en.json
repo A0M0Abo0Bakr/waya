@@ -21,6 +21,7 @@
   "error_invalid_name": "Name must contain letters only",
   "error_invalid_phone": "Phone number must be numeric and at least 9 digits",
   "start": "Start",
+  "stop": "Stop",
   "location_not_enabled": "Location service is disabled",
   "location_permission_denied": "Location permission denied",
   "location_permission_forever": "Location permission denied forever",

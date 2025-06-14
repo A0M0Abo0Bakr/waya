@@ -21,6 +21,7 @@
   "error_invalid_name": "يجب أن يحتوي الاسم على حروف فقط",
   "error_invalid_phone": "يجب أن يحتوي رقم الهاتف على أرقام و بطول 11 أرقام",
   "start": "تشغيل",
+  "stop": "ايقاف",
   "location_not_enabled": "خدمة الموقع غير مفعلة",
   "location_permission_denied": "تم رفض صلاحية الموقع",
   "location_permission_forever": "تم رفض الصلاحية نهائيًا",
