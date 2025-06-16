@@ -30,5 +30,10 @@
   "cannot_open_sms": "Cannot open SMS application",
   "location_sent": "Location sent successfully",
   "emergency_text": "I am at this location and need your help",
-  "sms_app_cannot_open": "Cannot open SMS application."
+  "sms_app_cannot_open": "Cannot open SMS application.",
+  "location_url": "Location URL",
+  "permissions_required_message": "All permissions must be granted to run the app",
+  "camera_init_error": "An error occurred while initializing the camera",
+  "server_error": "Error connecting to server",
+  "unexpected_error": "An unexpected error occurred"
 }

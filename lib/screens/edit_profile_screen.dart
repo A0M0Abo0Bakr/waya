@@ -15,6 +15,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController ageController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController familyPhoneController = TextEditingController();
+  final TextEditingController locationController = TextEditingController(); // ✅ جديد
 
   @override
   void initState() {
@@ -29,6 +30,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ageController.text = prefs.getString('age') ?? '';
       phoneController.text = prefs.getString('phone') ?? '';
       familyPhoneController.text = prefs.getString('familyPhone') ?? '';
+      locationController.text = prefs.getString('locationUrl') ?? ''; // ✅ جديد
     });
   }
 
@@ -39,12 +41,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       await prefs.setString('age', ageController.text);
       await prefs.setString('phone', phoneController.text);
       await prefs.setString('familyPhone', familyPhoneController.text);
+      await prefs.setString('locationUrl', locationController.text); // ✅ جديد
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('data_saved'.tr())),
       );
 
-      // بعد حفظ البيانات، الانتقال إلى صفحة SaveScreen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => SplashScreen()),
@@ -52,19 +54,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     }
   }
 
-  // التحقق من الاسم
   String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'error_name'.tr();
     }
-    // تم تعديل التعبير ليقبل الأحرف العربية والإنجليزية
     if (!RegExp(r'^[a-zA-Zأ-ي\s]+$').hasMatch(value)) {
       return 'error_invalid_name'.tr();
     }
     return null;
   }
 
-  // التحقق من رقم التليفون
   String? validatePhone(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'error_phone'.tr();
@@ -139,6 +138,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         controller: familyPhoneController,
                         keyboardType: TextInputType.phone,
                         validator: validatePhone,
+                      ),
+                      buildTextFormField(
+                        label: 'location'.tr(),
+                        controller: locationController,
+                        keyboardType: TextInputType.url,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'error_location'.tr();
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(height: 30),
                       ElevatedButton(

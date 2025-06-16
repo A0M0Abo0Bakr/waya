@@ -30,6 +30,10 @@
   "cannot_open_sms": "لا يمكن فتح تطبيق الرسائل",
   "location_sent": "تم إرسال الموقع بنجاح",
   "emergency_text": "أنا في هذا الموقع وأحتاج مساعدتك",
-  "sms_app_cannot_open": "لا يمكن فتح تطبيق الرسائل."
-
+  "sms_app_cannot_open": "لا يمكن فتح تطبيق الرسائل.",
+  "location_url": "رابط العنوان",
+  "permissions_required_message": "يجب السماح بجميع الصلاحيات لتشغيل التطبيق",
+  "camera_init_error": "حدث خطأ أثناء تشغيل الكاميرا",
+  "server_error": "خطأ في الاتصال بالخادم",
+  "unexpected_error": "حدث خطأ غير متوقع"
 }

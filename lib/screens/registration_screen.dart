@@ -15,22 +15,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController ageController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController familyPhoneController = TextEditingController();
-
-  String selectedCountryCode1 = '+20';
-  String selectedCountryCode2 = '+20';
-
-  final List<String> countryList = ['+20', '+966', '+971', '+1', '+44'];
+  final TextEditingController locationUrlController = TextEditingController();
 
   Future<void> goToMainScreen() async {
     if (_formKey.currentState!.validate()) {
       final prefs = await SharedPreferences.getInstance();
-      // حفظ حالة تسجيل الدخول
       await prefs.setBool('isLoggedIn', true);
-      // حفظ البيانات المُدخلة
       await prefs.setString('name', nameController.text);
       await prefs.setString('age', ageController.text);
       await prefs.setString('phone', phoneController.text);
       await prefs.setString('familyPhone', familyPhoneController.text);
+      await prefs.setString('locationUrl', locationUrlController.text);
 
       Navigator.pushReplacement(
         context,
@@ -94,7 +89,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         style: TextStyle(fontSize: 16, color: Colors.black54),
                       ),
                       SizedBox(height: 20),
-                      // الاسم
                       buildTextField(
                         labelKey: 'name',
                         controller: nameController,
@@ -105,7 +99,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           return null;
                         },
                       ),
-                      // العمر
                       buildTextField(
                         labelKey: 'age',
                         controller: ageController,
@@ -120,23 +113,28 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           return null;
                         },
                       ),
-                      buildPhoneFieldWithCountryCode(
+                      buildPhoneField(
                         labelKey: 'phone',
                         controller: phoneController,
-                        selectedCode: selectedCountryCode1,
-                        onChanged: (v) =>
-                            setState(() => selectedCountryCode1 = v!),
                         errorEmptyKey: 'error_phone',
                         errorInvalidKey: 'error_phone',
                       ),
-                      buildPhoneFieldWithCountryCode(
+                      buildPhoneField(
                         labelKey: 'family_phone',
                         controller: familyPhoneController,
-                        selectedCode: selectedCountryCode2,
-                        onChanged: (v) =>
-                            setState(() => selectedCountryCode2 = v!),
                         errorEmptyKey: 'error_family_phone',
                         errorInvalidKey: 'error_family_phone',
+                      ),
+                      buildTextField(
+                        labelKey: 'location_url',
+                        controller: locationUrlController,
+                        keyboardType: TextInputType.url,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'يرجى إدخال رابط العنوان';
+                          }
+                          return null; // مهم جدًا ترجّع null لو الفالديشن ناجح
+                        },
                       ),
                       SizedBox(height: 30),
                       ElevatedButton(
@@ -180,8 +178,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         validator: validator,
         decoration: InputDecoration(
           labelText: labelKey.tr(),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
           filled: true,
           fillColor: Colors.white,
           contentPadding:
@@ -191,66 +188,35 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
-  Widget buildPhoneFieldWithCountryCode({
+  Widget buildPhoneField({
     required String labelKey,
     required TextEditingController controller,
-    required String selectedCode,
-    required Function(String?) onChanged,
     required String errorEmptyKey,
     required String errorInvalidKey,
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        children: [
-          Container(
-            width: 90,
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: Colors.grey.shade400),
-            ),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: selectedCode,
-                isExpanded: true,
-                items: countryList.map((code) {
-                  return DropdownMenuItem(
-                    value: code,
-                    child: Text(code, style: TextStyle(fontSize: 16)),
-                  );
-                }).toList(),
-                onChanged: onChanged,
-              ),
-            ),
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: TextFormField(
-              controller: controller,
-              keyboardType: TextInputType.phone,
-              validator: (value) {
-                if (value == null || value.trim().isEmpty) {
-                  return errorEmptyKey.tr();
-                }
-                if (value.length < 9) {
-                  return errorInvalidKey.tr();
-                }
-                return null;
-              },
-              decoration: InputDecoration(
-                labelText: labelKey.tr(),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15)),
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding:
-                EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              ),
-            ),
-          ),
-        ],
+      child: TextFormField(
+        controller: controller,
+        keyboardType: TextInputType.phone,
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return errorEmptyKey.tr();
+          }
+          if (value.length < 9) {
+            return errorInvalidKey.tr();
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+          labelText: labelKey.tr(),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15)),
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding:
+          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        ),
       ),
     );
   }
